@@ -1,0 +1,38 @@
+#!/bin/bash
+
+echo "Criando diretorios..."
+
+	cd /
+	mkdir publico
+	mkdir adm
+	mkdir ven
+	mkdir sec
+
+echo "Os diretorios PUBLICO, ADM, VEN, SEC foram criados!"
+echo " "
+
+echo "Criando grupos..."
+	groupadd -r grp_adm
+	groupadd -r grp_ven
+	groupadd -r grp_sec
+echo "Os grupos GRP_ADM, GRP_VEN, GRP_SEC foram criados!"
+echo " "
+
+echo "Criando usuarios e suas gerenciando permissoes..."
+
+	useradd carlos -c "Carlos" -m -s /bin/bash -p $(openssl passwd sha256 123)
+	usermod -G publico,grp_adm  carlos
+	useradd maria -c "Maria" -m -s /bin/bash -p $(openssl passwd sha256 123)
+	usermod -G publico,grp_adm  maria
+	useradd joao -c "Joao" -m -s /bin/bash -p $(openssl passwd sha256 123)
+	
+	useradd debora -c "Debora" -m -s /bin/bash -p $(openssl passwd -crypt 123)
+	useradd jose -c "Jose" -m -s /bin/bash -p $(openssl passwd -crypt 123)
+	useradd roberto -c "Roberto" -m -s /bin/bash -p $(openssl passwd -crypt 123)
+
+	useradd geraldo -c "Geraldo" -m -s /bin/bash -p $(openssl passwd -crypt 123)
+	useradd amanda -c "Amanda" -m -s /bin/bash -p $(openssl passwd -crypt 123)
+	useradd julio -c "Julio" -m -s /bin/bash -p $(openssl passwd -crypt 123)	useradd usuaria -c "Mariana" -m -s /bin/bash -p $(openssl passwd -crypt123)
+
+	usermod -G publico,grp_adm  carlos
+echo "Os usuarios e suas devidas permissoes foram dadas"
